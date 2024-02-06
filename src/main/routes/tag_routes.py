@@ -1,16 +1,15 @@
 from pathlib import Path
 
-from flask import Flask, request, jsonify
+from flask import Blueprint, request, jsonify
 from barcode import Code128
 from barcode.writer import ImageWriter
 
-from utils import dir_tags
+from src.utils import dir_tags
 
 
-app = Flask(__name__)
+tag_routes_bp = Blueprint('tag_routes', __name__)
 
-
-@app.post('/create_tag')
+@tag_routes_bp.post('/create_tag')
 def create_tag():
     body = request.json
     product_code = body.get('product_code') # type: ignore
