@@ -6,7 +6,7 @@ from barcode.writer import ImageWriter
 
 class BarcodeWriter:
     def create_barcode(self, product_code: str) -> str:
-        tag = Code128(product_code, writer=ImageWriter())
+        tag = Code128(product_code, writer=ImageWriter)
         tags_path = Path('tags')
 
         if not tags_path.exists():
